@@ -1,5 +1,4 @@
-daily-brag
-==========
+# daily-brag
 
 A simple reminder to document your daily accomplishments
 
@@ -7,13 +6,18 @@ A simple reminder to document your daily accomplishments
 [![Version](https://img.shields.io/npm/v/daily-brag.svg)](https://npmjs.org/package/daily-brag)
 [![Downloads/week](https://img.shields.io/npm/dw/daily-brag.svg)](https://npmjs.org/package/daily-brag)
 [![License](https://img.shields.io/npm/l/daily-brag.svg)](https://github.com/git@github.com:c4tastic/daily-brag.git/blob/master/package.json)
+![lint](https://github.com/c4tastic/daily-brag/workflows/lint/badge.svg)
 
 <!-- toc -->
-* [Usage](#usage)
-* [Commands](#commands)
+
+- [Usage](#usage)
+- [Commands](#commands)
 <!-- tocstop -->
+
 # Usage
+
 <!-- usage -->
+
 ```sh-session
 $ npm install -g daily-brag
 $ daily-brag COMMAND
@@ -25,14 +29,18 @@ USAGE
   $ daily-brag COMMAND
 ...
 ```
+
 <!-- usagestop -->
+
 # Commands
+
 <!-- commands -->
-* [`daily-brag autocomplete [SHELL]`](#daily-brag-autocomplete-shell)
-* [`daily-brag help [COMMAND]`](#daily-brag-help-command)
-* [`daily-brag init`](#daily-brag-init)
-* [`daily-brag new`](#daily-brag-new)
-* [`daily-brag upload`](#daily-brag-upload)
+
+- [`daily-brag autocomplete [SHELL]`](#daily-brag-autocomplete-shell)
+- [`daily-brag help [COMMAND]`](#daily-brag-help-command)
+- [`daily-brag init`](#daily-brag-init)
+- [`daily-brag new`](#daily-brag-new)
+- [`daily-brag upload`](#daily-brag-upload)
 
 ## `daily-brag autocomplete [SHELL]`
 
@@ -121,4 +129,5 @@ OPTIONS
 ```
 
 _See code: [src/commands/upload.ts](https://github.com/c4tastic/daily-brag/blob/v0.0.1/src/commands/upload.ts)_
+
 <!-- commandsstop -->
