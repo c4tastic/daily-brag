@@ -1,9 +1,10 @@
 name: release
 
-push:
-  branches:
-    - main
-    - master
+on:
+  push:
+    branches:
+      - master
+      - main
 
 steps:
   - name: Checkout
