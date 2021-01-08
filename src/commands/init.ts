@@ -2,6 +2,7 @@ import { Command, flags } from '@oclif/command'
 import { existsSync, writeFileSync, mkdirSync } from 'fs'
 import { prompt } from 'inquirer'
 import { configPath, defaultPath, documentsPath } from '../constants'
+import { validateGitHubToken } from 'validate-github-token'
 
 export interface BragConfig {
   environment: string
@@ -33,7 +34,13 @@ export default class Init extends Command {
         name: 'environment',
         message: 'Where do you want to host your files?',
         type: 'list',
-        choices: [{ name: 'github' }, { name: 'locally' }]
+        choices: [
+          { name: 'github' }
+          /**
+           * TODO: support local in the future
+           */
+          // , { name: 'locally' }
+        ]
       },
       {
         name: 'path',
@@ -64,12 +71,18 @@ export default class Init extends Command {
         message: `What's your github token?`,
         type: 'input',
         when: (answers) => answers.environment === 'github',
-        validate: (answer: string) => {
-          // won't check if token is valid
-          if (answer.length === 40) {
+        validate: async (answer: string) => {
+          const repo = 'repo'
+          const { scopes } = await validateGitHubToken(answer, {
+            scope: {
+              included: [repo]
+            }
+          })
+
+          if (scopes.includes(repo)) {
             return true
           }
-          return 'Invalid token, please create: https://github.com/settings/tokens/new?scopes=repo'
+          return `Invalid token, please create one: https://github.com/settings/tokens/new?scopes=${repo}`
         }
       }
     ])

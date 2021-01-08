@@ -37,13 +37,17 @@ export default class New extends Command {
       .catch(async (error) => {
         // folder doesn't exist
         if (error.status === 404) {
-          await octokit.request(`PUT ${contentQuery}/.keep`, {
-            owner,
-            repo,
-            path,
-            message: `creating folder ${path}`,
-            content: Buffer.from('.keep').toString('base64')
-          })
+          const keep = '.keep'
+
+          await octokit
+            .request(`PUT ${contentQuery}/${keep}`, {
+              owner,
+              repo,
+              path,
+              message: `creating folder ${path}`,
+              content: Buffer.from(keep).toString('base64')
+            })
+            .catch(this.error)
         } else {
           this.error(error)
         }
@@ -71,7 +75,7 @@ export default class New extends Command {
     const data: BragDocument = {
       date: formatedDate
     }
-    const editor = process.env.EDITOR ?? process.env.VISUAL ?? 'code'
+    const editor = process.env.EDITOR ?? process.env.VISUAL
     const result = render(template, data)
 
     if (config?.environment === 'github') {
@@ -86,10 +90,15 @@ export default class New extends Command {
       // locally
     }
 
-    const bragFileName = `${documentsPath}/${formatedDate}-daily-brag.md`
+    const fileName = `${formatedDate}-daily-brag.md`
+    const fullFilePath = `${documentsPath}/${fileName}`
 
-    writeFileSync(bragFileName, result, 'utf-8')
+    writeFileSync(fullFilePath, result, 'utf-8')
 
-    exec(`${editor} ${bragFileName}`)
+    if (editor) {
+      exec(`${editor} ${fullFilePath}`)
+    } else {
+      this.log(`File: ${fileName} created at: ${documentsPath}`)
+    }
   }
 }

@@ -10,5 +10,8 @@ module.exports = {
     ecmaVersion: 2020,
     sourceType: 'module',
     project: './tsconfig.json'
+  },
+  rules: {
+    '@typescript-eslint/explicit-module-boundary-types': 'off'
   }
 }
