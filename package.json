@@ -29,6 +29,7 @@
     "@types/node": "^14.14.20",
     "@typescript-eslint/eslint-plugin": "^4.12.0",
     "@typescript-eslint/parser": "^4.12.0",
+    "cz-conventional-changelog": "3.3.0",
     "eslint": "^7.17.0",
     "eslint-config-oclif": "^3.1",
     "eslint-config-oclif-typescript": "^0.2.0",
@@ -83,6 +84,7 @@
   "types": "lib/index.d.ts",
   "husky": {
     "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true",
       "pre-commit": "lint-staged"
     }
   },
@@ -90,5 +92,10 @@
     "*.ts": [
       "eslint --fix --quiet"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
