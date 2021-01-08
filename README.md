@@ -7,6 +7,7 @@ A simple reminder to document your daily accomplishments
 [![Downloads/week](https://img.shields.io/npm/dw/daily-brag.svg)](https://npmjs.org/package/daily-brag)
 [![License](https://img.shields.io/npm/l/daily-brag.svg)](https://github.com/git@github.com:c4tastic/daily-brag.git/blob/master/package.json)
 ![lint](https://github.com/c4tastic/daily-brag/workflows/lint/badge.svg)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 <!-- toc -->
 
