@@ -81,7 +81,7 @@
   "repository": "git@github.com:c4tastic/daily-brag.git",
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",
-    "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
+    "prepack": "rm -rf lib && tsc -b && mkdir lib/template && cp src/template/brag.template.md lib/template/brag.template.md && oclif-dev manifest && oclif-dev readme",
     "test": "echo NO TESTS",
     "version": "oclif-dev readme && git add README.md",
     "lint": "eslint 'src/**/*.ts'",
