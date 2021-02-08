@@ -1,5 +1,6 @@
 {
   "name": "@c4tastic/daily-brag",
+  "private": false,
   "description": "A simple reminder to document your daily accomplishments",
   "version": "0.0.1",
   "author": "Lucien Bénié <lucien.benie@gmail.com>",
